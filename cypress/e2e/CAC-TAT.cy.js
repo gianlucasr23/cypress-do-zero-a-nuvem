@@ -8,10 +8,13 @@ describe("Central de Atendimento ao Cliente TAT", () => {
   });
 
   it.only("preenche os campos obrigatórios e envia o formulário", () => {
+    const longText = Cypress._.repeat('abcdefghijklmnopqrstuvwxyz', 10)
+
+
     cy.get('#firstName').type('Gian')
     cy.get('#lastName').type('Rodrigues Ferreira de Souza')
     cy.get('#email').type('lucas.gian@teste.com')
-    cy.get('#open-text-area').type('Obrigado!')
+    cy.get('#open-text-area').type(longText, {delay: 0})
     cy.get('.button[type="submit"]').click()
 
 
