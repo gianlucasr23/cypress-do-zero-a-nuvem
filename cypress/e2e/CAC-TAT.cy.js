@@ -50,21 +50,31 @@ describe("Central de Atendimento ao Cliente TAT", () => {
       .type("Gian")
       .should("have.value", "Gian")
       .clear()
+
       .should("have.value", "");
     cy.get("#lastName")
       .type("Rodrigues Ferreira de Souza")
       .should("have.value", "Rodrigues Ferreira de Souza")
       .clear()
+
       .should("have.value", "");
     cy.get("#email")
       .type("lucasgian@teste.com")
       .should("have.value", "lucasgian@teste.com")
       .clear()
+
       .should("have.value", "");
     cy.get("#phone")
       .type("318766632")
       .should("have.value", "318766632")
       .clear()
+
       .should("have.value", "");
+  });
+
+  it("exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios", () => {
+    cy.get('.button[type="submit"]').click();
+
+    cy.get(".error").should("be.visible");
   });
 });
