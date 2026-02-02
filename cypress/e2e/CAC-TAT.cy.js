@@ -90,6 +90,4 @@ describe("Central de Atendimento ao Cliente TAT", () => {
 
     cy.get(".success").should("be.visible");
   });
-
-  it("");
 });
