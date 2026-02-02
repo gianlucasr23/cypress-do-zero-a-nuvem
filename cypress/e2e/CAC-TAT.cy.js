@@ -14,7 +14,7 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get("#lastName").type("Rodrigues Ferreira de Souza");
     cy.get("#email").type("lucas.gian@teste.com");
     cy.get("#open-text-area").type(longText, { delay: 0 });
-    cy.get('.button[type="submit"]').click();
+    cy.contains("button", "Enviar").click();
 
     cy.get(".success").should("be.visible");
   });
@@ -25,7 +25,7 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get("#lastName").type("Rodrigues Ferreira de Souza");
     cy.get("#email").type("lucas.gian@teste,com");
     cy.get("#open-text-area").type("teste");
-    cy.get('.button[type="submit"]').click();
+    cy.contains("button", "Enviar").click();
 
     cy.get(".error").should("be.visible");
   });
@@ -40,7 +40,7 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get("#email").type("lucas.gian@teste,com");
     cy.get("#open-text-area").type("teste");
     cy.get('[for="phone-checkbox"]').click();
-    cy.get('.button[type="submit"]').click();
+    cy.contains("button", "Enviar").click();
 
     cy.get(".error").should("be.visible");
   });
@@ -73,23 +73,23 @@ describe("Central de Atendimento ao Cliente TAT", () => {
   });
 
   it("exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios", () => {
-    cy.get('.button[type="submit"]').click();
+    cy.contains("button", "Enviar").click();
 
     cy.get(".error").should("be.visible");
   });
 
-
-  it('envia o formuário com sucesso usando um comando customizado', () => {
+  it("envia o formuário com sucesso usando um comando customizado", () => {
     const data = {
-      firstName: 'Gian',
-      lastName: 'Rodrigues Ferreira de Souza',
-      email: 'lucas.gian@teste.com',
-      text: 'Teste',
-    }
-    
-    cy.fillMandatoryFieldsAndSubmit (data)
+      firstName: "Gian",
+      lastName: "Rodrigues Ferreira de Souza",
+      email: "lucas.gian@teste.com",
+      text: "Teste",
+    };
 
-    cy.get('.success').should('be.visible')
-  })
+    cy.fillMandatoryFieldsAndSubmit(data);
 
+    cy.get(".success").should("be.visible");
+  });
+
+  it("");
 });
