@@ -158,7 +158,6 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get("#file-upload")
       .selectFile("@sampleFile")
 
-
       .should((input) => {
         expect(input[0].files[0].name).to.equal("example.json");
       });
